@@ -1,8 +1,10 @@
 package com.ckarthickit.dagger.sample;
 
+import javax.inject.Inject;
 import java.util.*;
 
 public class CommandRouter {
+    @Inject
     public CommandRouter(){
 
     }

@@ -14,7 +14,8 @@ public class CommandLineATM {
     public static void main(String[] args) {
         System.out.println("Enter Commands:");
         Scanner scanner = new Scanner(System.in);
-        CommandRouter commandRouter  = new CommandRouter();
+        CommandRouterFactory commandRouterFactory = DaggerCommandRouterFactory.create();
+        CommandRouter commandRouter  = commandRouterFactory.router();
         while(scanner.hasNextLine()) {
             String nextToken = scanner.nextLine();
             if(EXIT_TOKEN.equalsIgnoreCase(nextToken)) {
