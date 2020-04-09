@@ -1,14 +1,17 @@
 package com.ckarthickit.dagger.sample;
 
+import com.ckarthickit.dagger.sample.internal.HelloWorldCommand;
+
 import javax.inject.Inject;
 import java.util.*;
 
 public class CommandRouter {
-    @Inject
-    public CommandRouter(){
+    private static final Map<String, Command> keyToCommandMap = new HashMap<>();
 
+    @Inject
+    public CommandRouter(HelloWorldCommand helloWorldCommand){
+        keyToCommandMap.put(helloWorldCommand.key(), helloWorldCommand);
     }
-    private static final Map<String, Command> keyToCommandMap = Collections.emptyMap();
 
     Command.Status route(String input) {
         List<String> splitInput = split(input);
