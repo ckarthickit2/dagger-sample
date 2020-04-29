@@ -23,12 +23,29 @@
         - No parameters
         - return type = injected (or) provided type.
           ```java
-             SomeType getSomeType();
+            interface SomeComponent{
+              SomeType getSomeType();
+          }
           ```
       - `Members-Injection Methods`
-        - Single parameter
+        - Have a Single parameter
         - return type = void (or) The Single Parameter's Type
         - Inject dependencies into each of the **Inject-annotated fields and methods of the passed instance**.
+          ```java
+          interface SomeComponent{ 
+              void injectSomeType(SomeType someType);
+              SomeType injectAndReturnSomeType(SomeType someType);
+          }
+          ```
+
+## Modules - `@@Module`
+
+  - Annotates a class that `contributes to the object graph`.
+  - __classes__ or __interfaces__ that act as "collection of instructions" for Dagger on how to construct dependencies.
+  - Ways to construct dependencies.
+    1. `@Binds` annotated abstract methods
+    2. `@Provides` annotated concrete methods 
+  
         
     
  
