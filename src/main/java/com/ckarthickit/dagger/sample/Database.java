@@ -1,10 +1,12 @@
 package com.ckarthickit.dagger.sample;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+@Singleton
 public class Database {
     private final Map<String, Account> accounts = new HashMap<>();
 
@@ -20,7 +22,7 @@ public class Database {
 
     public static class Account {
         private final String userName;
-        private final BigDecimal balance = BigDecimal.ZERO;
+        private BigDecimal balance = BigDecimal.ZERO;
 
         public Account(String userName) {
             this.userName = userName;
@@ -28,6 +30,10 @@ public class Database {
 
         public String userName() {
             return userName;
+        }
+
+        public void deposit(BigDecimal amount) {
+            balance = balance.add(amount);
         }
 
         public BigDecimal balance() {

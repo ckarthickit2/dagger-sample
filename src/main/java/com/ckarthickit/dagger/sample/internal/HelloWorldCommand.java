@@ -20,7 +20,7 @@ public class HelloWorldCommand implements Command {
         if (!input.isEmpty()) {
             return Status.INVALID;
         }
-        outputter.output("world!");
+        outputter.output("howdy!");
         return Status.HANDLED;
     }
 }

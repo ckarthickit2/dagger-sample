@@ -38,14 +38,20 @@
           }
           ```
 
-## Modules - `@@Module`
+## Modules - `@Module`
 
-  - Annotates a class that `contributes to the object graph`.
-  - __classes__ or __interfaces__ that act as "collection of instructions" for Dagger on how to construct dependencies.
-  - Ways to construct dependencies.
-    1. `@Binds` annotated abstract methods
-    2. `@Provides` annotated concrete methods 
+- Annotates a class that `contributes to the object graph`.
+- __classes__ or __interfaces__ that act as "collection of instructions" for Dagger on how to construct dependencies.
+- Ways to construct dependencies.
+  1. `@Binds` annotated abstract methods
+  2. `@Provides` annotated concrete methods 
   
         
-    
- 
+## Scope Annotations - `@Scope` 
+
+- Applies to a class __containing__ `injectable constructor`
+- governs how the injector re-uses instances of the Scope applied `type`.
+- Examples
+  - `@Singleton` - a scoped binding that instructs injector to create only 1 instance.
+- Common Errors
+  - un-scoped components may not reference scoped bindings
