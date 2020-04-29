@@ -6,7 +6,6 @@ import java.util.List;
  * Logic to process some input
  */
 public interface Command {
-    String key();
 
     Status handleInput(List<String> input);
 

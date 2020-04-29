@@ -6,11 +6,12 @@ import javax.inject.Inject;
 import java.util.*;
 
 public class CommandRouter {
-    private static final Map<String, Command> keyToCommandMap = new HashMap<>();
+    private final Map<String, Command> keyToCommandMap;
 
+    //Injecting a Map<String,Command> instead of a single command.
     @Inject
-    public CommandRouter(Command command){
-        keyToCommandMap.put(command.key(), command);
+    public CommandRouter(Map<String,Command> commands){
+        keyToCommandMap = commands;
     }
 
     Command.Status route(String input) {
