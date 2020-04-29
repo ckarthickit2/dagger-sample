@@ -9,8 +9,8 @@ public class CommandRouter {
     private static final Map<String, Command> keyToCommandMap = new HashMap<>();
 
     @Inject
-    public CommandRouter(HelloWorldCommand helloWorldCommand){
-        keyToCommandMap.put(helloWorldCommand.key(), helloWorldCommand);
+    public CommandRouter(Command command){
+        keyToCommandMap.put(command.key(), command);
     }
 
     Command.Status route(String input) {
