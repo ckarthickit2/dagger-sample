@@ -1,4 +1,4 @@
-package com.ckarthickit.dagger.sample.di;
+package com.ckarthickit.dagger.sample.di.modules;
 
 import com.ckarthickit.dagger.sample.Command;
 import com.ckarthickit.dagger.sample.internal.DepositCommand;
@@ -8,7 +8,7 @@ import dagger.multibindings.IntoMap;
 import dagger.multibindings.StringKey;
 
 @Module
-public abstract class DepositCmdModule {
+public interface UserCommandsModule {
     @Binds
     @IntoMap
     @StringKey("deposit")

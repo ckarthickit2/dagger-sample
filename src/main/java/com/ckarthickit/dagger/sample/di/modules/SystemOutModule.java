@@ -1,4 +1,4 @@
-package com.ckarthickit.dagger.sample.di;
+package com.ckarthickit.dagger.sample.di.modules;
 
 import com.ckarthickit.dagger.sample.Outputter;
 import dagger.Module;
