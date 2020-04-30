@@ -4,24 +4,24 @@
 package com.ckarthickit.dagger.sample;
 
 
-import com.ckarthickit.dagger.sample.di.CommandRouterFactory;
-import com.ckarthickit.dagger.sample.di.DaggerCommandRouterFactory;
+import com.ckarthickit.dagger.sample.di.CommandProcessorFactory;
 
 import java.util.Scanner;
 
 public class CommandLineATM {
     private static final String EXIT_TOKEN = "EXIT";
+
     public static void main(String[] args) {
         System.out.println("Enter Commands:");
         Scanner scanner = new Scanner(System.in);
-        CommandRouterFactory commandRouterFactory = DaggerCommandRouterFactory.create();
-        CommandRouter commandRouter  = commandRouterFactory.router();
-        while(scanner.hasNextLine()) {
+        CommandProcessorFactory commandRouterFactory = CommandProcessorFactory.create();
+        CommandProcessor commandProcessor = commandRouterFactory.processor();
+        while (scanner.hasNextLine()) {
             String nextToken = scanner.nextLine();
-            if(EXIT_TOKEN.equalsIgnoreCase(nextToken)) {
+            if (EXIT_TOKEN.equalsIgnoreCase(nextToken)) {
                 break;
             }
-            commandRouter.route(nextToken);
+            commandProcessor.process(nextToken);
         }
     }
 }
