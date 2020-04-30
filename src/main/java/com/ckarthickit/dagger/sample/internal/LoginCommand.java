@@ -17,9 +17,9 @@ public class LoginCommand extends SingleArgCommand {
     }
 
     @Override
-    public Status handleInput(String userName) {
+    public Result handleInput(String userName) {
         Database.Account account = database.getAccount(userName);
         outputter.output(userName + " is logged in with balance " + account.balance());
-        return Status.HANDLED;
+        return Result.handled();
     }
 }

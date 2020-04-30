@@ -1,7 +1,5 @@
 package com.ckarthickit.dagger.sample;
 
-import com.ckarthickit.dagger.sample.internal.HelloWorldCommand;
-
 import javax.inject.Inject;
 import java.util.*;
 
@@ -14,7 +12,7 @@ public class CommandRouter {
         keyToCommandMap = commands;
     }
 
-    Command.Status route(String input) {
+    Command.Result route(String input) {
         List<String> splitInput = split(input);
         if (splitInput.isEmpty()) {
             return invalidCommand(input);
@@ -26,16 +24,16 @@ public class CommandRouter {
             return invalidCommand(input);
         }
 
-        Command.Status status = command.handleInput(splitInput.subList(1, splitInput.size()));
-        if (status == Command.Status.INVALID) {
+        Command.Result result = command.handleInput(splitInput.subList(1, splitInput.size()));
+        if (result.status == Command.Status.INVALID) {
             System.out.println(String.format("%s: Invalid Arguments", commandKey));
         }
-        return status;
+        return result;
     }
 
-    Command.Status invalidCommand(String input) {
+    Command.Result invalidCommand(String input) {
         System.out.println(String.format("Couldn't understand input: %s. Please try again!", input));
-        return Command.Status.INVALID;
+        return Command.Result.invalid();
     }
 
     private static List<String> split(String string) {

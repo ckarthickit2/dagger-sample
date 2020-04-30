@@ -20,15 +20,15 @@ public class DepositCommand implements Command {
     }
 
     @Override
-    public Status handleInput(List<String> input) {
+    public Result handleInput(List<String> input) {
         if (input.size() != 2) {
-            return Status.INVALID;
+            return Result.invalid();
         }
         String userName = input.get(0);
         BigDecimal depositAmount = new BigDecimal(input.get(1));
         Database.Account account = database.getAccount(userName);
         account.deposit(depositAmount);
         outputter.output(account.userName() + " now has " + account.balance());
-        return Status.HANDLED;
+        return Result.handled();
     }
 }
