@@ -55,3 +55,55 @@
   - `@Singleton` - a scoped binding that instructs injector to create only 1 instance.
 - Common Errors
   - un-scoped components may not reference scoped bindings
+  
+
+## Qualifiers - `@Qualifier`
+
+- Sometimes `type` alone is insufficient to identify a dependency. We need qualifiers in those case.
+- Example1
+  ```java
+      @Module
+      interface ElectricHeaterModule { 
+        @Provides @Named("hot plate") static Heater provideHotPlateHeater() {
+          return new ElectricHeater(70);
+        }
+                    
+        @Provides @Named("water") static Heater provideWaterHeater() {
+          return new ElectricHeater(93);
+        }
+      }   
+      class ExpensiveCoffeeMaker {
+        @Inject @Named("water") Heater waterHeater;
+        @Inject @Named("hot plate") Heater hotPlateHeater;
+        //...
+      }
+  ```
+  >Explanation: ElectricHeaterModule provides 2 instance of __type Heater__. At injection site, we have to add 
+  > qualifier to specify which "labelled/qualified instance" we want.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 > 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      >
+- Example2: 
+  ```java
+      /** Qualifier for the currently logged-in user. */
+      @Retention(RUNTIME)
+      @Qualifier
+      @Documented
+      @interface Username {}
+  
+      @Component(modules = AccountModule.class)
+      interface AccountsFactory {
+        @Component.Factory
+        interface Factory{
+          //Binds userName to the AccountsFactory instance.
+          AccountsFactory create(@BindsInstance @Username String username);
+        }
+      }
+      @Module
+      interface AccountModule {
+        @Provides
+        //Since Account Module is bound to AccountsFactory component, userName is passed from bound
+        // instance variable "userName" of AccountsFactory. 
+        static Account accountFor(@Username String userName) {
+          return new Account(userName);
+        }
+      } 
+  ```
