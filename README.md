@@ -111,3 +111,11 @@
         }
       } 
   ```
+  
+## `@Inject` constructor vs `@Binds` abstract method  vs `@Provides` concrete method
+
+- `@Inject` is uses in a constructor of any concrete class that is visible to a component.
+- `@Binds` is used in a `module`'s abstract method to bind 
+  it's __parameter__ (a concrete type) to it's __return type__ (an abstract type).
+- `@Provides` is used in a  `module`'s concrete method to bind a 
+  it's __return type__ (an abstract type) to it's __returned value__ (a concrete type).
