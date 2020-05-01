@@ -49,8 +49,10 @@
         
 ## Scope Annotations - `@Scope` 
 
+- Instructs Dagger to provide __one shared instance for all the requests 
+  for that type__ within an instance of the (sub)component that shares the same annotation.
 - Applies to a class __containing__ `injectable constructor`
-- governs how the injector re-uses instances of the Scope applied `type`.
+- governs how the injector re-uses instances of the Scope applied `type`. 
 - Examples
   - `@Singleton` - a scoped binding that instructs injector to create only 1 instance.
     - Dagger either used `DoubleCheck` (or) `Instance-Holder` pattern to implement singleton.

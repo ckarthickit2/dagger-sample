@@ -5,10 +5,12 @@ import com.ckarthickit.dagger.sample.di.modules.AccountModule;
 import com.ckarthickit.dagger.sample.di.modules.AmountModule;
 import com.ckarthickit.dagger.sample.di.modules.UserCommandsModule;
 import com.ckarthickit.dagger.sample.di.qualifierexample.Username;
+import com.ckarthickit.dagger.sample.di.scopes.PerSession;
 import dagger.BindsInstance;
 import dagger.Module;
 import dagger.Subcomponent;
 
+@PerSession
 @Subcomponent(modules = {
         UserCommandsModule.class,
         AccountModule.class,
