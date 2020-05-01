@@ -64,6 +64,7 @@
 ## Qualifiers - `@Qualifier`
 
 - Sometimes `type` alone is insufficient to identify a dependency. We need qualifiers in those case.
+- used to __differentiate between instances of the same type that are unrelated__.
 - Example1
   ```java
       @Module
