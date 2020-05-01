@@ -2,13 +2,18 @@ package com.ckarthickit.dagger.sample.di;
 
 import com.ckarthickit.dagger.sample.CommandRouter;
 import com.ckarthickit.dagger.sample.di.modules.AccountModule;
+import com.ckarthickit.dagger.sample.di.modules.AmountModule;
 import com.ckarthickit.dagger.sample.di.modules.UserCommandsModule;
 import com.ckarthickit.dagger.sample.di.qualifierexample.Username;
 import dagger.BindsInstance;
 import dagger.Module;
 import dagger.Subcomponent;
 
-@Subcomponent(modules = {UserCommandsModule.class, AccountModule.class})
+@Subcomponent(modules = {
+        UserCommandsModule.class,
+        AccountModule.class,
+        AmountModule.class
+})
 public interface UserCommandsRouterSubComponent {
 
     CommandRouter userCommandRouter();
