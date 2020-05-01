@@ -12,5 +12,5 @@ public interface UserCommandsModule {
     @Binds
     @IntoMap
     @StringKey("deposit")
-    public abstract Command bindDepositCommand(DepositCommand depositCommand);
+    Command bindDepositCommand(DepositCommand depositCommand);
 }

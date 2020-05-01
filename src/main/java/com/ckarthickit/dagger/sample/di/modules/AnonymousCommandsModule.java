@@ -1,9 +1,11 @@
 package com.ckarthickit.dagger.sample.di.modules;
 
 import com.ckarthickit.dagger.sample.Command;
+import com.ckarthickit.dagger.sample.Database;
 import com.ckarthickit.dagger.sample.internal.HelloWorldCommand;
 import com.ckarthickit.dagger.sample.internal.LoginCommand;
 import dagger.Binds;
+import dagger.BindsOptionalOf;
 import dagger.Module;
 import dagger.multibindings.IntoMap;
 import dagger.multibindings.StringKey;
@@ -19,5 +21,8 @@ public interface AnonymousCommandsModule {
     @Binds
     @IntoMap
     @StringKey("login")
-    abstract Command bindLoginCommand(LoginCommand command);
+    Command bindLoginCommand(LoginCommand command);
+
+    @BindsOptionalOf
+    Database.Account loggedInAccount();
 }
