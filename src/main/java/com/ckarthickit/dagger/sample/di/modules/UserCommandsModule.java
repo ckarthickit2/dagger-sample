@@ -2,6 +2,7 @@ package com.ckarthickit.dagger.sample.di.modules;
 
 import com.ckarthickit.dagger.sample.Command;
 import com.ckarthickit.dagger.sample.internal.DepositCommand;
+import com.ckarthickit.dagger.sample.internal.LogoutCommand;
 import com.ckarthickit.dagger.sample.internal.WithdrawCommand;
 import dagger.Binds;
 import dagger.Module;
@@ -19,4 +20,9 @@ public interface UserCommandsModule {
     @IntoMap
     @StringKey("withdraw")
     Command bindWithdrawCommand(WithdrawCommand withdrawCommand);
+
+    @Binds
+    @IntoMap
+    @StringKey("logout")
+    Command bindLogoutCommand(LogoutCommand logoutCommand);
 }
