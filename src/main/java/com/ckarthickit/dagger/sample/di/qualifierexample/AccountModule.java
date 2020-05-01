@@ -1,4 +1,4 @@
-package com.ckarthickit.dagger.sample.qualifierexample;
+package com.ckarthickit.dagger.sample.di.qualifierexample;
 
 import dagger.Module;
 import dagger.Provides;

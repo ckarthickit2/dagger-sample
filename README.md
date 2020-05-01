@@ -53,6 +53,10 @@
 - governs how the injector re-uses instances of the Scope applied `type`.
 - Examples
   - `@Singleton` - a scoped binding that instructs injector to create only 1 instance.
+    - Dagger either used `DoubleCheck` (or) `Instance-Holder` pattern to implement singleton.
+    - If the `@Inject` constructor is no-arg then `Instance-Holder` pattern is used.
+    - If the `@Injec` constructor has arguments then `DoubleCheck` is used at creation site. 
+      (that is the Component Factory `initialize()` method).
 - Common Errors
   - un-scoped components may not reference scoped bindings
   

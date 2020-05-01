@@ -4,7 +4,7 @@
 package com.ckarthickit.dagger.sample;
 
 
-import com.ckarthickit.dagger.sample.di.CommandProcessorFactory;
+import com.ckarthickit.dagger.sample.di.CommandProcessorComponent;
 
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ public class CommandLineATM {
     public static void main(String[] args) {
         System.out.println("Enter Commands:");
         Scanner scanner = new Scanner(System.in);
-        CommandProcessorFactory commandRouterFactory = CommandProcessorFactory.create();
+        CommandProcessorComponent commandRouterFactory = CommandProcessorComponent.create();
         CommandProcessor commandProcessor = commandRouterFactory.processor();
         while (scanner.hasNextLine()) {
             String nextToken = scanner.nextLine();
