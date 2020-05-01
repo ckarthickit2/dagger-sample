@@ -2,7 +2,6 @@ package com.ckarthickit.dagger.sample.internal;
 
 import com.ckarthickit.dagger.sample.Database;
 import com.ckarthickit.dagger.sample.Outputter;
-import com.ckarthickit.dagger.sample.SingleArgCommand;
 import com.ckarthickit.dagger.sample.di.UserCommandsRouterSubComponent;
 
 import javax.inject.Inject;

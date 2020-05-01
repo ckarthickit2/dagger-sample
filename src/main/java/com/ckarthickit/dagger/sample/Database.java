@@ -36,6 +36,10 @@ public class Database {
             balance = balance.add(amount);
         }
 
+        public void withdraw(BigDecimal amount) {
+            balance = balance.subtract(amount);
+        }
+
         public BigDecimal balance() {
             return balance;
         }
